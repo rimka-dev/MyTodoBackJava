@@ -105,6 +105,24 @@ public class MytodoApplication implements CommandLineRunner {
 				todoManager.addListe(todo8);
 				todoManager.addListe(todo9);
 				todoManager.getAllTodo().forEach(System.out::println);
+				//============ ma todo 4 course gateau ========
+				Todo maTodo4 = new Todo("Crêpe au chocolat");
+				
+				ListOfTodo todo10 = new ListOfTodo("Farine", maTodo4);
+				ListOfTodo todo11 = new ListOfTodo("oeufs", maTodo3);
+				ListOfTodo todo12 = new ListOfTodo("Lait", maTodo4);
+				
+				maTodo4.addListeOfTodo(todo10);
+				maTodo4.addListeOfTodo(todo11);
+				maTodo4.addListeOfTodo(todo12);
+				
+				System.out.println(maTodo4);
+				//===== Create =============
+				todoManager.addTodo(maTodo4);
+				todoManager.addListe(todo10);
+				todoManager.addListe(todo11);
+				todoManager.addListe(todo12);
+				todoManager.getAllTodo().forEach(System.out::println);
 
 	
 	}
