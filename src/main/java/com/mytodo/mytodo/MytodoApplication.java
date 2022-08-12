@@ -150,14 +150,23 @@ public class MytodoApplication implements CommandLineRunner {
 				System.out.println(userManager.getUserByUsername("user1"));
 				
 				userManager.lisUser().forEach(System.out::println);
-				
-				
-				
-			
-
 	
 	}
-	
+	/*
+	 il est possible faire les tests de note IHM dans la fonstion runner suivante :
+	 
+	 @Bean
+	 CommandLineRunner start(UserManager manager){
+	 	return args -> {
+	 		
+	 		manager.addNewRole(new AppRoles("USER"));
+	 		..... etc nos tests ihm
+	 	
+	 	}
+	 
+	 }
+	 
+	 */
 	
 	
 
