@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.mytodo.mytodo.bll.TodoManager;
+import com.mytodo.mytodo.bo.AppRoles;
+import com.mytodo.mytodo.bo.AppUser;
 import com.mytodo.mytodo.bo.ListOfTodo;
 import com.mytodo.mytodo.bo.Todo;
 
@@ -123,6 +125,10 @@ public class MytodoApplication implements CommandLineRunner {
 				todoManager.addListe(todo11);
 				todoManager.addListe(todo12);
 				todoManager.getAllTodo().forEach(System.out::println);
+				
+				//======= create users =============
+				//AppRoles role = new AppRoles("ADMIN");
+				//AppUser user1 = new AppUser("user1","1234", role);
 
 	
 	}
