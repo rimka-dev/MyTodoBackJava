@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.mytodo.mytodo.bll.TodoManager;
+import com.mytodo.mytodo.bll.UserManager;
 import com.mytodo.mytodo.bo.AppRoles;
 import com.mytodo.mytodo.bo.AppUser;
 import com.mytodo.mytodo.bo.ListOfTodo;
@@ -20,6 +21,8 @@ public class MytodoApplication implements CommandLineRunner {
 	
 	@Autowired
 	TodoManager todoManager;
+	@Autowired
+	UserManager userManager;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(MytodoApplication.class, args);
@@ -126,9 +129,31 @@ public class MytodoApplication implements CommandLineRunner {
 				todoManager.addListe(todo12);
 				todoManager.getAllTodo().forEach(System.out::println);
 				
-				//======= create users =============
-				//AppRoles role = new AppRoles("ADMIN");
-				//AppUser user1 = new AppUser("user1","1234", role);
+				//======= create users and roles =============
+				userManager.addNewRole(new AppRoles("USER"));
+				userManager.addNewRole(new AppRoles("ADMIN"));
+				userManager.addNewRole(new AppRoles("CUSTOMER_MANAGER"));
+				
+				userManager.addNewUser(new AppUser("user1","1234"));
+				userManager.addNewUser(new AppUser("admin","1234"));
+				userManager.addNewUser(new AppUser("manager","1234"));
+				userManager.addNewUser(new AppUser("adminBis","1234"));
+				
+				//==== affecter les roles ============
+				userManager.addRoleToUser("user1", "USER");
+				userManager.addRoleToUser("admin", "ADMIN");
+				userManager.addRoleToUser("manager","CUSTOMER_MANAGER");
+				userManager.addRoleToUser("adminBis","USER");
+				userManager.addRoleToUser("adminBis","ADMIN");
+				
+				System.out.println("======!!!========");
+				System.out.println(userManager.getUserByUsername("user1"));
+				
+				userManager.lisUser().forEach(System.out::println);
+				
+				
+				
+			
 
 	
 	}
