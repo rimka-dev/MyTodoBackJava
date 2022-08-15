@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 @Entity
 
@@ -17,6 +19,7 @@ public class AppUser {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String username;
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // carche le mdp comme JsonIgnore
 	private String password;
 	@ManyToMany(fetch = FetchType.EAGER) //EAGER = les roles vont etre charger avec user, LAZY = les roles ne sont pas charger avec user sauf si on a besoin de les récuperer
 	private Collection<AppRoles> appRoles = new HashSet<>();
