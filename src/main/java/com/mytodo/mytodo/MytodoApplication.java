@@ -153,7 +153,7 @@ public class MytodoApplication implements CommandLineRunner {
 	
 	}
 	/*
-	 il est possible faire les tests de note IHM dans la fonstion runner suivante :
+	 il est possible faire les tests de notre IHM dans la fonstion runner suivante :
 	 
 	 @Bean
 	 CommandLineRunner start(UserManager manager){
