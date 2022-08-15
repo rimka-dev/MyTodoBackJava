@@ -3,6 +3,9 @@ package com.mytodo.mytodo.bll;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,8 +21,11 @@ public class UserManagerImpl implements UserManager{
 	@Autowired
 	RoleDAO rolesDao;
 	
+	
 	@Override
 	public AppUser addNewUser(AppUser user1) {
+		String pw = user1.getPassword();
+		user1.setPassword(new BCryptPasswordEncoder().encode(pw)); //haché ou encoder le mot de passe
 		return  userDao.save(user1);
 	}
 

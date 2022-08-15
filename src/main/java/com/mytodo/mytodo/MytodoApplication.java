@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.mytodo.mytodo.bll.TodoManager;
 import com.mytodo.mytodo.bll.UserManager;
@@ -28,9 +31,17 @@ public class MytodoApplication implements CommandLineRunner {
 		SpringApplication.run(MytodoApplication.class, args);
 		
 	}
+	
+	/*@Bean
+	PasswordEncoder passwordencoder() {
+		return new BCryptPasswordEncoder();
+		}*/
+	
 	@Override
 	@Transactional
 	public void run(String... args) throws Exception{
+		
+		
 		//============ ma todo 1 course gateau ========
 		Todo maTodo = new Todo("Course gateau");
 		
